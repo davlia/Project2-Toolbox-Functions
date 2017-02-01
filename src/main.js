@@ -81,6 +81,7 @@ function powerCurve(x, a, b) {
 
 function render(framework) {
   const SUB = 60;
+  const LAYERS = 2;
   let {scene, guiVars} = framework;
   let feathers = [];
   let lower, upper, range;
@@ -104,9 +105,6 @@ function render(framework) {
     let featherGeo = obj.children[0].geometry;
     let featherMesh = new THREE.Mesh(featherGeo, lambertWhite);
     featherMesh.rotation.set(0, PI / 2, -PI / 2);
-    const LAYERS = 2;
-
-    // featherMesh.scale.set(1, 1, 1);
 
     // Primaries
     lower = Math.floor(3 * SUB / 4);
@@ -121,7 +119,6 @@ function render(framework) {
         feather.name = `f_primaries${i}`;
         feather.position.set(v.x, v.y, v.z);
         feather.rotateY(lerp(0, -PI / 4, i / range));
-        // feather.scale.x += lerp(0, 0.3, i / range);
         feather.scale.z += 0.2 * (LAYERS - j);
         feather.position.z = (LAYERS - j) / (LAYERS * 10);
         feather.scale.x = lerp(0.2, featherLength, j / LAYERS);
@@ -144,8 +141,6 @@ function render(framework) {
         feather.name = `f_primaries${i}_${j}`;
         feather.position.set(v.x, v.y, v.z);
         feather.rotateY(lerp(PI / 16, 0, i / range));
-        // feather.scale.x = 1 + cubicPulse(0.1, range, i - range / 2);
-        // feather.scale.x += powerCurve(i / range, 1.5, 1) / 3;
         feather.scale.z += 0.5 * (LAYERS - j);
         feather.position.z = (LAYERS - j) / (LAYERS * 10);
         feather.scale.x = lerp(0.3, featherLength, j / LAYERS);
@@ -169,10 +164,6 @@ function render(framework) {
         feather.name = `f_primaries${i}_${j}`;
         feather.position.set(v.x, v.y, v.z);
         feather.rotateY(lerp(PI / 8, PI / 16, i / range));
-        // feather.scale.x = 1 + cubicPulse(0.1, range, i - range / 2);
-        // feather.scale.x += powerCurve(i / range, 1.5, 1) / 3;
-        // feather.scale.x += parabola(i / range, 1.5) / 6;
-        // feather.scale.x += lerp(0.5, 0, i / range);
         feather.scale.z = 2
         feather.position.z = (LAYERS - j) / (LAYERS * 10);
         feather.scale.x = lerp(0.3, featherLength, j / LAYERS);
