@@ -53,6 +53,8 @@ function init(callback, update) {
     framework.scene = scene;
     framework.camera = camera;
     framework.renderer = renderer;
+    framework.guiVars = {};
+    framework.feathers = [];
 
     // begin the animation loop
     (function tick() {

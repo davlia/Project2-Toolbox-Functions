@@ -55,6 +55,11 @@ function onUpdate(framework) {
   //   let date = new Date();
   //   feather.rotateZ(Math.sin(date.getTime() / 100) * 2 * Math.PI / 180);
   // }
+  let {feathers} = framework;
+  let date = new Date();
+  feathers.forEach((f, i) => {
+    feather.rotateZ(Math.sin(date.getTime() / 100) * 2 * Math.PI / 180);
+  })
 }
 
 function lerp(a, b, t) {
@@ -82,8 +87,7 @@ function powerCurve(x, a, b) {
 function render(framework) {
   const SUB = 60;
   const LAYERS = 2;
-  let {scene, guiVars} = framework;
-  let feathers = [];
+  let {scene, guiVars, feathers} = framework
   let lower, upper, range;
   let featherLength = 0.8;
   // create a simple wing framework
@@ -101,7 +105,7 @@ function render(framework) {
   // draw feathers
   let objLoader = new THREE.OBJLoader();
   objLoader.load('/geo/feather.obj', function(obj) {
-    let lambertWhite = new THREE.MeshLambertMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide });
+    let lambertWhite = new THREE.MeshLambertMaterial({color: 0xaaaaaa, side: THREE.DoubleSide});
     let featherGeo = obj.children[0].geometry;
     let featherMesh = new THREE.Mesh(featherGeo, lambertWhite);
     featherMesh.rotation.set(0, PI / 2, -PI / 2);
