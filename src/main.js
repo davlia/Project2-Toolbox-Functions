@@ -32,7 +32,6 @@ function onLoad(framework) {
     ] );
 
     scene.background = skymap;
-
     // load a simple obj mesh
     var objLoader = new THREE.OBJLoader();
     objLoader.load('/geo/feather.obj', function(obj) {
@@ -52,6 +51,8 @@ function onLoad(framework) {
     // scene.add(lambertCube);
     scene.add(directionalLight);
 
+    render();
+
     // edit params and listen to changes like this
     // more information here: https://workshop.chromeexperiments.com/examples/gui/#1--Basic-Usage
     gui.add(camera, 'fov', 0, 180).onChange(function(newVal) {
@@ -61,12 +62,16 @@ function onLoad(framework) {
 
 // called on frame updates
 function onUpdate(framework) {
-    var feather = framework.scene.getObjectByName("feather");    
+    var feather = framework.scene.getObjectByName("feather");
     if (feather !== undefined) {
         // Simply flap wing
         var date = new Date();
-        feather.rotateZ(Math.sin(date.getTime() / 100) * 2 * Math.PI / 180);        
+        feather.rotateZ(Math.sin(date.getTime() / 100) * 2 * Math.PI / 180);
     }
+}
+
+function render(framework) {
+
 }
 
 // when the scene is done initializing, it will call onLoad, then on frame updates, call onUpdate
