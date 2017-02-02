@@ -55,6 +55,33 @@ function init(callback, update) {
     framework.renderer = renderer;
     framework.guiVars = {};
     framework.feathers = [];
+    framework.controlPoints = [
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(1, -1, 1),
+      new THREE.Vector3(2, 1, -1),
+      new THREE.Vector3(5, -1, 1)
+    ];
+    framework.keyframes = [[new THREE.Vector3(0, 0, 0),
+                            new THREE.Vector3(1, -1, 1),
+                            new THREE.Vector3(2, 1, -1),
+                            new THREE.Vector3(5, -1, 1)],
+                           [new THREE.Vector3(2, 0, 0),
+                            new THREE.Vector3(1, 2, 1),
+                            new THREE.Vector3(2, 5, -1),
+                            new THREE.Vector3(0, 10, 1)],
+                           [new THREE.Vector3(0, 1, 0),
+                            new THREE.Vector3(1, -1, 1),
+                            new THREE.Vector3(2, 1, -1),
+                            new THREE.Vector3(5, 11, 1)],
+                           [new THREE.Vector3(0, 0, 0),
+                            new THREE.Vector3(3, -3, 0),
+                            new THREE.Vector3(6, -7, -1),
+                            new THREE.Vector3(9, -10, 0)],
+                           [new THREE.Vector3(0, -2, 0),
+                            new THREE.Vector3(1, -2, 1),
+                            new THREE.Vector3(-2, -7, -1),
+                            new THREE.Vector3(-2, -11, 1)]];
+    framework.bone = {};
 
     // begin the animation loop
     (function tick() {
