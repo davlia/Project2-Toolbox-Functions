@@ -21,7 +21,7 @@ function onLoad(framework) {
 
   // set skybox
   let loader = new THREE.CubeTextureLoader();
-  let urlPrefix = '/images/skymap/';
+  let urlPrefix = '';
 
   let skymap = new THREE.CubeTextureLoader().load([
       urlPrefix + 'px.jpg', urlPrefix + 'nx.jpg',
@@ -235,7 +235,7 @@ function render(framework) {
   scene.add(curveObj);
   // draw feathers
   let objLoader = new THREE.OBJLoader();
-  objLoader.load('/geo/feather.obj', function(obj) {
+  objLoader.load('/feather.obj', function(obj) {
     let lambertWhite = new THREE.MeshLambertMaterial({color: guiVars.color, side: THREE.DoubleSide});
     let featherGeo = obj.children[0].geometry;
     let featherMesh = new THREE.Mesh(featherGeo, lambertWhite);
